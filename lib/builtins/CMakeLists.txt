@@ -421,7 +421,10 @@ if (APPLE)
   add_subdirectory(macho_embedded)
   darwin_add_builtin_libraries(${BUILTIN_SUPPORTED_OS})
 else ()
-  append_string_if(COMPILER_RT_HAS_STD_C99_FLAG -std=gnu99 maybe_stdc99)
+  # MSVC doesn't define -std=gnu99 flags, and produces warnings.
+  if (NOT CMAKE_C_COMPILER_ID STREQUAL "MSVC")
+    append_string_if(COMPILER_RT_HAS_STD_C99_FLAG -std=gnu99 maybe_stdc99)
+  endif()
 
   foreach (arch ${BUILTIN_SUPPORTED_ARCH})
     if (CAN_TARGET_${arch})
