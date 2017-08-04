@@ -20,9 +20,19 @@
 #include "tsan_report.h"
 #include "tsan_rtl.h"
 
+#include <stdlib.h>
+
 namespace __tsan {
 
 void EnterSymbolizer() {
+#if SANITIZER_MAC
+  // Workaround for a change in macOS 10.13 where ptsname now uses thread-local
+  // storage, and that is a problem with the "in_symbolizer" mode (we use a
+  // different allocator). To avoid the issue let's call ptsname before we enter
+  // the "in_symbolizer" mode.
+  ptsname(0);
+#endif
+
   ThreadState *thr = cur_thread();
   CHECK(!thr->in_symbolizer);
   thr->in_symbolizer = true;
