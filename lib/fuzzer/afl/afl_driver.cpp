@@ -264,7 +264,7 @@ int ExecuteFilesOnyByOne(int argc, char **argv) {
     assert(in);
     LLVMFuzzerTestOneInput(reinterpret_cast<const uint8_t *>(bytes.data()),
                            bytes.size());
-    std::cout << "Execution successfull" << std::endl;
+    std::cout << "Execution successful" << std::endl;
   }
   return 0;
 }
