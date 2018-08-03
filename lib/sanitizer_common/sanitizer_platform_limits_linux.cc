@@ -30,6 +30,7 @@
 // fine with newer headers, too.
 #include <linux/posix_types.h>
 #if defined(__x86_64__) ||  defined(__mips__)
+#define _STRUCT_TIMESPEC
 #include <sys/stat.h>
 #else
 #define ino_t __kernel_ino_t

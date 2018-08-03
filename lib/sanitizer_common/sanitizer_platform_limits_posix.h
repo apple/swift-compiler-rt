@@ -197,7 +197,6 @@ namespace __sanitizer {
     int v[10];
   };
 
-  extern unsigned struct_ustat_sz;
   extern unsigned struct_rlimit64_sz;
   extern unsigned struct_statvfs64_sz;
 
