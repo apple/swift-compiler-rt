@@ -16,6 +16,12 @@
 /*! \brief Create a directory tree. */
 void __llvm_profile_recursive_mkdir(char *Pathname);
 
+/*! Set the mode used when creating profile directories. */
+void __llvm_profile_set_dir_mode(unsigned Mode);
+
+/*! Return the directory creation mode. */
+unsigned __llvm_profile_get_dir_mode(void);
+
 int lprofLockFd(int fd);
 int lprofUnlockFd(int fd);
 
@@ -53,8 +59,6 @@ int lprofGetHostName(char *Name, int Len);
 
 unsigned lprofBoolCmpXchg(void **Ptr, void *OldV, void *NewV);
 void *lprofPtrFetchAdd(void **Mem, long ByteIncr);
-
-void lprofInstallSignalHandler(int sig, void(*handler)(int));
 
 /* Temporarily suspend SIGKILL. Return value of 1 means a restore is needed.
  * Other return values mean no restore is needed.
