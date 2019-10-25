@@ -1,3 +1,8 @@
+# Disclaimer
+
+The swift-compiler-rt repository is frozen and is preserved for historical purposes only.
+Active development is now happening in the following repository: https://github.com/apple/llvm-project
+ 
 Compiler-RT
 ================================
 
